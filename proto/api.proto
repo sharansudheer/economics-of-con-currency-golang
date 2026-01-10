@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package api;
+
+service UserService {
+  rpc GetUser (UserRequest) returns (UserResponse);
+}
+
+service OrderService {
+  rpc GetOrders (OrderRequest) returns (OrderResponse);
+}
+
+service BFFService {
+  rpc GetUserDashboard (DashboardRequest) returns (DashboardResponse);
+}
+
+message UserRequest {
+  string user_id = 1;
+}
+
+message UserResponse {
+  string user_id = 1;
+  string name = 2;
+}
+
+message OrderRequest {
+  string user_id = 1;
+}
+
+message OrderResponse {
+  repeated string orders = 1;
+}
+
+message DashboardRequest {
+  string user_id = 1;
+}
+
+message DashboardResponse {
+  string name = 1;
+  repeated string orders = 2;
+}
